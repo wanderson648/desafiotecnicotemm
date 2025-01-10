@@ -20,6 +20,7 @@ public class SecurityConfig {
                     auth.requestMatchers("/users").permitAll()
                             .requestMatchers("/cards").permitAll()
                             .requestMatchers("/transactions").permitAll()
+                            .requestMatchers("/auth").permitAll()
                             .anyRequest().authenticated();
                 }).build();
     }
