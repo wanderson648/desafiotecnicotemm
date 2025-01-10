@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TransacaoService {
 
-    Transacao createTransaction(TransacaoDTO dto);
+    Transacao createTransaction(String email, TransacaoDTO dto);
 
     List<Transacao> listTransactions();
 }

@@ -1,5 +1,6 @@
 package com.temm.desafiotecnico.models;
 
+import com.temm.desafiotecnico.models.dto.TransacaoDTO;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -17,14 +18,15 @@ public class Transacao {
 
     private BigDecimal valor;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
-    private Usuario usuario;
-
-    @Column(name = "usuario_id")
-    private Long idUsuario;
+    private String email;
 
     public Transacao() {
+    }
+
+    public Transacao(String email, TransacaoDTO dto) {
+        this.email = email;
+        this.tipoTransacao = dto.tipoTransacao();
+        this.valor = dto.valor();
     }
 
     public Long getId() {
@@ -51,19 +53,11 @@ public class Transacao {
         this.valor = valor;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

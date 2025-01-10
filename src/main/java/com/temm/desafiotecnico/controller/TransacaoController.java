@@ -18,9 +18,10 @@ public class TransacaoController {
     private TransacaoService transacaoService;
 
     @PostMapping
-    public ResponseEntity<Transacao> createTransaction(@RequestBody TransacaoDTO dto) {
+    public ResponseEntity<Transacao> createTransaction(@RequestParam String email,
+                                                       @RequestBody TransacaoDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(transacaoService.createTransaction(dto));
+                .body(transacaoService.createTransaction(email, dto));
     }
 
     @GetMapping

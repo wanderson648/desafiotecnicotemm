@@ -1,5 +1,6 @@
 package com.temm.desafiotecnico.models.dto;
 
+import com.temm.desafiotecnico.models.Usuario;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;

@@ -1,5 +1,6 @@
 package com.temm.desafiotecnico.models;
 
+import com.temm.desafiotecnico.models.dto.CartaoCreditoDTO;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -22,15 +23,20 @@ public class CartaoCredito {
 
     private BigDecimal saldo;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
-    private Usuario usuario;
-
-    @Column(name = "usuario_id")
-    private Long idUsuario;
+    private String emailUsuario;
 
     public CartaoCredito() {
     }
+
+    public CartaoCredito(String email, CartaoCreditoDTO dto) {
+        this.numero = dto.numero();
+        this.mes = dto.mes();
+        this.ano = dto.ano();
+        this.cvv = dto.cvv();
+        this.saldo = dto.saldo();
+        this.emailUsuario = email;
+    }
+
 
     public Long getId() {
         return id;
@@ -80,19 +86,11 @@ public class CartaoCredito {
         this.saldo = saldo;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getEmailUsuario() {
+        return emailUsuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
     }
 }
